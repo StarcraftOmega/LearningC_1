@@ -1,7 +1,6 @@
 /*unit1.hw 
 Group members: Jonathon Faircloth, Samuel Yang, Chey Rajavarapu
-THE TEST WORKED
-Jonathon- I was missing around and made this first part so there are things we have not learned yet.
+Note-We where missing around and madded some things we havent learned yet
 */
 
 #include <stdio.h>
@@ -13,8 +12,7 @@ Jonathon- I was missing around and made this first part so there are things we h
 #include <unistd.h> // For sleep() on Linux/macOS
 #endif
 
-void clear(
-    int delay) // So that we can just call for Clear(x) and not the whole thing
+void clear(int delay) // So that we can just call for Clear(x) and not the whole thing and it works crossplatform :)
 {
 #ifdef _WIN32          // Only works on windows
   Sleep(delay * 1000); // Windows: Convert seconds to milliseconds
@@ -27,12 +25,9 @@ void clear(
 
 int main() {
   int idOfUser;
-  int classId1;
-  int classId2; 
-  int classHours1;
-  int classHours2;
-  int num = 0; // Suppot for loops. If not 0, no loops will start or they will
-               // end so use break; to end a single loop
+  int classId1, classId2; 
+  int classHours1, classHours2;
+  int num = 0; // Suppot for loops. If not 0, no loops will start or they will end so use break; to end a single loop
 
   while (num == 0) // Looping Incase ID is invalid. Will not start / restart if
                    // num is not = 0
