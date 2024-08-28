@@ -1,6 +1,7 @@
 /*
 Keyboard.write(65);         // sends ASCII value 65, or A
 Keyboard.write('A');            // same thing as a quoted character
+https://www.asciitable.com/
 */
 #include <Arduino.h>
 #include <Keyboard.h>
