@@ -1,6 +1,7 @@
 /*unit1.hw 
 Group members: Jonathon Faircloth, Samuel Yang, Chey Rajavarapu
 Note-We where missing around and madded some things we havent learned yet
+PLEASE WORK
 */
 
 #include <stdio.h>
