@@ -10,6 +10,14 @@ void sendKey(char key) {
     // Simulate a key release
     keybd_event((BYTE)key, 0, KEYEVENTF_KEYUP, 0);
 }
+void simulateVolumeDown() {
+    keybd_event(VK_VOLUME_DOWN, 0, 0, 0);         // Press Volume Down key
+    keybd_event(VK_VOLUME_DOWN, 0, KEYEVENTF_KEYUP, 0);  // Release Volume Down key
+}
+void simulateVolumeUp() {
+    keybd_event(VK_VOLUME_UP, 0, 0, 0);  // Press Volume Up key
+    keybd_event(VK_VOLUME_UP, 0, KEYEVENTF_KEYUP, 0);  // Release Volume Up key
+}
 
 bool readSerial(HANDLE hSerial, char* szBuffer, DWORD bufferSize) {
     DWORD bytesRead;
@@ -32,7 +40,8 @@ int main() {
     char szBuffer[100];
     bool waitingForPower = true;
     double lastInputTime = 0.0;
-    double delay = 0.5;  // 0.5 seconds delay between inputs
+    double delay = 0.2;  // 0.2 seconds delay between inputs
+    double delayB=.8; //delay between power press
 
     // Open COM4
     hSerial = CreateFile("\\\\.\\COM4", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
@@ -81,14 +90,16 @@ int main() {
         // Check the time elapsed since the last input
         double currentTime = getTimeInSeconds();
         if (currentTime - lastInputTime < delay) {
-            continue;  // Skip input if it hasn't been 0.5 seconds
+            continue;  // Skip input if it hasn't been 0.2 seconds
         }
 
         if (waitingForPower) {
-            // Check for "POWER" command to toggle state
-            if (strcmp(szBuffer, "POWER") == 0) {
-                waitingForPower = false;  // Toggle to waiting for keys
-                printf("Entered key input mode\n");
+            if (currentTime-lastInputTime > delayB){
+                // Check for "POWER" command to toggle state
+                if (strcmp(szBuffer, "POWER") == 0) {
+                    waitingForPower = false;  // Toggle to waiting for keys
+                    printf("Entered key input mode\n");
+                }
             }
         } else {
             // In key input mode
@@ -104,7 +115,13 @@ int main() {
             } else if (strcmp(szBuffer, "5") == 0) {
                 system("taskmgr");
                 printf("OpeningTasManger\n");
-            } else if (strcmp(szBuffer, "POWER") == 0) {
+            }else if (strcmp(szBuffer, "LEFT") == 0) {
+                simulateVolumeDown();
+                printf("Lowering Volume\n");
+            }else if (strcmp(szBuffer, "RIGHT") == 0) {
+                simulateVolumeUp();
+                printf("Raising Volume\n");
+            }else if (strcmp(szBuffer, "POWER") == 0) {
                 waitingForPower = true;  // Toggle back to waiting for "POWER"
                 printf("Exited key input mode, waiting for 'POWER'\n");
             }
