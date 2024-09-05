@@ -3,6 +3,8 @@
 
 int main(){
     int counter=0;
+    int x=1;
+    int y=2;
     while(counter<15){
         printf("%d",counter);
         counter ++;
@@ -12,6 +14,8 @@ int main(){
         printf("%d",i);
           
     } 
-
+    if (x==1 && y==2){
+        printf("good");
+    }
 
 }
