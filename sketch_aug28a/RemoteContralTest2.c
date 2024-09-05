@@ -4,19 +4,13 @@
 #include <stdbool.h>
 #include <time.h>
 
-void sendKey(char key) {
-    keybd_event((BYTE)key, 0, 0, 0);         // Simulate a key press
+void sendKeyChar(char key) {
+    keybd_event((BYTE)key, 0, 0, 0);         // Simulate a key press like 1,2,3 and a,b,c
     keybd_event((BYTE)key, 0, KEYEVENTF_KEYUP, 0); // Simulate a key release
 }
-
-void simulateVolumeDown() {
-    keybd_event(VK_VOLUME_DOWN, 0, 0, 0);         // Press Volume Down key
-    keybd_event(VK_VOLUME_DOWN, 0, KEYEVENTF_KEYUP, 0);  // Release Volume Down key
-}
-
-void simulateVolumeUp() {
-    keybd_event(VK_VOLUME_UP, 0, 0, 0);  // Press Volume Up key
-    keybd_event(VK_VOLUME_UP, 0, KEYEVENTF_KEYUP, 0);  // Release Volume Up key
+void sendKeyValue(WORD key) {
+    keybd_event((BYTE)key, 0, 0, 0);         // Simulate key press using value for things like f13,play,pause
+    keybd_event((BYTE)key, 0, KEYEVENTF_KEYUP, 0); // Simulate key release
 }
 
 bool readSerial(HANDLE hSerial, char* szBuffer, DWORD bufferSize) {
@@ -104,22 +98,35 @@ int main() {
         } else {
             // In key input mode
             if (strcmp(szBuffer, "1") == 0) {
-                sendKey('1');  // Output keyboard key '1'
+                sendKeyChar('1');  // Output keyboard key '1'
                 printf("Key '1' sent\n");
             } else if (strcmp(szBuffer, "2") == 0) {
-                sendKey('2');  // Output keyboard key '2'
+                sendKeyChar('2');  // Output keyboard key '2'
                 printf("Key '2' sent\n");
-            } else if (strcmp(szBuffer, "3") == 0) {
-                sendKey('3');  // Output keyboard key '3'
-                printf("Key '3' sent\n");
-            } else if (strcmp(szBuffer, "5") == 0) {
+            } else if (strcmp(szBuffer, "OK") == 0) {
+                sendKeyValue(0x7E);  // press f13
+                printf("Key 'f13' sent\n");
+            } else if (strcmp(szBuffer, "PLAY") == 0) {
+                sendKeyValue(0xB3); 
+                printf("Pausing\n");
+            } else if (strcmp(szBuffer, "A") == 0) {
                 system("taskmgr");
                 printf("Opening Task Manager\n");
+            } else if (strcmp(szBuffer, "B") == 0) {
+                const char *command = "\"E:\\My Appes\\Microsoft VS Code\\Code.exe\"";
+                system(command);  // Launch the application
+                printf("Launching Visual Studio Code...\n");
+            } else if (strcmp(szBuffer, "REVERSE") == 0) {
+                sendKeyValue(0xB1);
+                printf("Skipping\n");
+            } else if (strcmp(szBuffer, "FORWARD") == 0) {
+                sendKeyValue(0xB0);
+                printf("Skipping\n");
             } else if (strcmp(szBuffer, "LEFT") == 0) {
-                simulateVolumeDown();
+                sendKeyValue(0xAE);
                 printf("Lowering Volume\n");
             } else if (strcmp(szBuffer, "RIGHT") == 0) {
-                simulateVolumeUp();
+                sendKeyValue(0xAF);
                 printf("Raising Volume\n");
             }
 
