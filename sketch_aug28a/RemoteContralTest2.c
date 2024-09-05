@@ -105,7 +105,7 @@ int main() {
                 printf("Key '2' sent\n");
             } else if (strcmp(szBuffer, "OK") == 0) {
                 sendKeyValue(0x7E);  // press f13
-                printf("Key 'f13' sent\n");
+                printf("ScreenShot\n");
             } else if (strcmp(szBuffer, "PLAY") == 0) {
                 sendKeyValue(0xB3); 
                 printf("Pausing\n");
@@ -116,12 +116,25 @@ int main() {
                 const char *command = "\"E:\\My Appes\\Microsoft VS Code\\Code.exe\"";
                 system(command);  // Launch the application
                 printf("Launching Visual Studio Code...\n");
+            } else if (strcmp(szBuffer, "C") == 0) {
+                const char *command = "\"C:\\Program Files\\Cheat Engine 7.3\\Cheat Engine.exe\"";
+                system(command);  // Launch the application
+                printf("Launching CheatEngine\n");
             } else if (strcmp(szBuffer, "REVERSE") == 0) {
                 sendKeyValue(0xB1);
                 printf("Skipping\n");
             } else if (strcmp(szBuffer, "FORWARD") == 0) {
                 sendKeyValue(0xB0);
                 printf("Skipping\n");
+            } else if (strcmp(szBuffer, "RECORD") == 0) {
+                sendKeyValue(0x7D);
+                printf("Recording\n");
+            } else if (strcmp(szBuffer, "STOP") == 0) {
+                sendKeyValue(0x7E);
+                printf("Intent replay ON\n");
+            } else if (strcmp(szBuffer, "PAUSE") == 0) {
+                sendKeyValue(0x7F);
+                printf("Saveing Last 5 minits\n");
             } else if (strcmp(szBuffer, "LEFT") == 0) {
                 sendKeyValue(0xAE);
                 printf("Lowering Volume\n");
