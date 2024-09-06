@@ -1,3 +1,8 @@
+/*unit2.hw 
+Group members: Jonathon Faircloth, Samuel Yang, Chey Rajavarapu
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
