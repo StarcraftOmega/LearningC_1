@@ -24,45 +24,57 @@ void clear(int delay) // So that we can just call for clear(x) and not the whole
 #endif
 }
 
+// added this and valid to fix if a letter was added instead of a number
+void clearBuffer() { //clears the infomation soterd for input to stop loop bug
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF); // Discard all characters?
+}
+
 int main(){
     float hw,projects,labs,midterm1,midterm2,final,overall;
     char* overallLetter;
     char restart[10];
     int repeat =0;
+    int valid;// to check if a input is a number. Usealy 1 but for loop 4 it need 3 because of 3 inputs
+
     while (1){
         clear(1);
         while(repeat==0){
             printf("Enter the hw average score(max of 100 for all): ");
-            scanf("%f",&hw);
-            if (hw>100||hw<0){
+            valid=scanf("%f",&hw);
+            if (valid != 1 ||hw>100||hw<0){
                 printf("Invalide %.2f\n",hw);
+                clearBuffer();                
                 continue;
             }
             break;
         }
         while(repeat==0){
             printf("Enter the project average score: ");
-            scanf("%f",&projects);
-            if (projects>100||projects<0){
+            valid=scanf("%f",&projects);
+            if (valid != 1 ||projects>100||projects<0){
                 printf("Invalide %.2f\n",projects);
+                clearBuffer();
                 continue;
             }
             break;
         }
         while(repeat==0){
             printf("Enter lab average score: ");
-            scanf("%f",&labs);
-            if (labs>100||labs<0){
+            valid=scanf("%f",&labs);
+            if (valid != 1 ||labs>100||labs<0){
                 printf("Invalide %.2f\n",labs);
+                clearBuffer();
                 continue;
             }
             break;
         }
         while(repeat==0){
             printf("Enter midterm1, midterm2 and the final *note leave a space between each: ");
-            scanf("%f %f %f",&midterm1,&midterm2,&final);
-            if (midterm1>100||midterm1<0||midterm2>100||midterm2<0||final>100||final<0){
+            valid=scanf("%f %f %f",&midterm1,&midterm2,&final);
+            if (valid != 3 ||midterm1>100||midterm1<0||midterm2>100||midterm2<0||final>100||final<0){
                printf("Invalide: %.2f,%.2f,%.2f\n",midterm1,midterm2,final);
+                clearBuffer();
                 continue; 
             }
             break;
@@ -86,8 +98,8 @@ int main(){
         printf("-----------------------\n");
         printf("            Final Grade:%s\n\n",overallLetter);
         printf("Would you like to repeat? y/n: ");
-        scanf("%s",restart);
-        if (strcmp(restart, "Y") == 0 || strcmp(restart, "y")==0||strcmp(restart, "yes")==0||strcmp(restart, "Yes") == 0){
+        valid=scanf("%s",restart);
+        if (strcmp(restart, "Y") == 0 || strcmp(restart, "y")==0||strcmp(restart, "yes")==0||strcmp(restart, "Yes") == 0){            
             continue;
         }
 
