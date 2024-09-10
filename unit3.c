@@ -8,13 +8,15 @@ int main() {
     int index;
     int indexB;
     int duplicate=1;
-    int largest=myArray[0];
+    int largest=myArray[0];// sets the first number as the largest
 
+    // lopps 10 times and check if current largest is bigger then each loops value
     for (index=0;index<10;index++){
         if(myArray[index]>largest){
             largest=myArray[index];
         }
     }
+    // Loops through each array value(there are 10 total) 10 times and if the current value is in one of 10 it adds to duplicat.
     for(index=0;index<10;index++){
         for(indexB=0;indexB<10;indexB++){
             if (myArray[index]==myArray[indexB])
