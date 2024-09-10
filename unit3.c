@@ -20,8 +20,9 @@ int main() {
     // Loops through each array value(there are 10 total) 10 times and if the current value is in one of 10 it adds to duplicat.
     for(index=0;index<10;index++){
         for(indexB=0;indexB<10;indexB++){
-            if (myArray[index]==myArray[indexB])
-            duplicate++;
+            if (myArray[index]==myArray[indexB]){
+                duplicate++;
+            }
         }
     }
     for(index=0;index<10;index++){
