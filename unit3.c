@@ -25,7 +25,8 @@ int main() {
         }
     }
     for(index=0;index<10;index++){
-        average=average+myArray[index]   
+        average=average+myArray[index];   
+            
     
     }
 
