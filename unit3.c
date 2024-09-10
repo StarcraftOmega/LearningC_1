@@ -33,7 +33,7 @@ int main() {
 
     average=average/10;
     printf("the largest value is %d\n",largest);
-    printf("the average value is %f\n",average);
+    printf("the average value is %.02f\n",average);
     printf("the ray has duplicated %d times",duplicate);
 
 
