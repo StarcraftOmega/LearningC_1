@@ -1,5 +1,5 @@
 //unit3.hw
-//Group members: 
+//Group members: Jonathon Faircloth, Samuel Yang, Chey Rajavarapu
 
 #include <stdio.h>
 
@@ -42,11 +42,3 @@ int main() {
 }
 
 
-
-/*
-printf("Number %d",myArray[0]);
-
-1) Largest value = 78
-2) Average value as a float = 15.70
-3) The array has duplicates.
-*/
