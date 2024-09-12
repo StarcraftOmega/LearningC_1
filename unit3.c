@@ -16,23 +16,15 @@ int main() {
         if(myArray[index]>largest){
         largest=myArray[index];
         }
-    }
-    // Loops through each array value(there are 10 total) 10 times and if the current value is in one of 10 it adds to duplicat.
-    for(index=0;index<10;index++){
         for(indexB=0;indexB<10;indexB++){
             if (myArray[index]==myArray[indexB]){
                 duplicate++;
             }
         }
+        average=average+myArray[index];
     }
-    for(index=0;index<10;index++){
-        average=average+myArray[index];   
-            
-    
-    }
-
     average=average/10;
-    duplicate=duplicate-10;
+    duplicate=(duplicate-10)/2;
     printf("the largest value is %d\n",largest);
     printf("the average value is %.02f\n",average);
     printf("the ray has duplicated %d times",duplicate);
