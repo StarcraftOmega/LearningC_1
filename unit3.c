@@ -1,5 +1,5 @@
 //unit3.hw
-//Group members: Jonathon Faircloth, Samuel Yang, Chey Rajavarapu
+//Group members: Jonathon Faircloth, Samuel Yang, Chanakya Rajavarapu
 
 #include <stdio.h>
 
