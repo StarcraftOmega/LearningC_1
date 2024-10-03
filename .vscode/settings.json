@@ -1,4 +1,7 @@
 {
     "errorLens.codeLensEnabled": true,
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "stdlib.h": "c"
+    }
 }
