@@ -1,3 +1,6 @@
+//unit4.hw
+//Group members: Jonathon Faircloth, Samuel Yang
+
 # include <stdio.h>
 # include <stdlib.h>
 
