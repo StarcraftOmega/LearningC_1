@@ -22,6 +22,7 @@ int main(){
     *duplicate=0;
     *largest=0;
 
+    
     for (*index=0;*index<10;(*index)++){ 
         myArray[*index]=(*index==0) ? 1:
             (*index==1) ? 56:
@@ -34,7 +35,8 @@ int main(){
             (*index==8) ? 9:
             (*index==9) ? 78: 0;
         //printf("%d\n",myArray[*index]);
-    }
+    }  
+    
 
 
     for (*index=0;*index<10;(*index)++){
