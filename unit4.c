@@ -1,5 +1,5 @@
 //unit4.hw
-//Group members: Jonathon Faircloth, Samuel Yang
+//Group members: Jonathon Faircloth, Samuel Yang, Chanakya Rajavarapu
 
 # include <stdio.h>
 # include <stdlib.h>
