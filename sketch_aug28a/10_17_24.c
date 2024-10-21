@@ -24,7 +24,7 @@ int main(){
     return 0;
 }
 */
-/*
+
 void fun(int *n,int *p){
 
     (*n)++;
@@ -36,17 +36,18 @@ void fun(int *n,int *p){
 int main(){
     int *x, *y;
     x = malloc(4);
-    *y = *x;
-
+    //*y = *x;
+    printf("%d", &x);
+    printf("\t%d", &y);
     *x=8;
     *y=7;
 
     fun(x,y);
-    printf("%d\t%d\n",*x,*y);
+    //printf("%d\t%d\n",*x,*y);
 
 
 }
-*/
+
 /*
 int factorial(int n){
 
@@ -58,7 +59,7 @@ return factorial(n-1)*n;
 
 */
 
-
+/*
 int main(){
 
 int i;
@@ -71,3 +72,4 @@ for (i=0;i<1000;i++){
 
 
 }
+*/
