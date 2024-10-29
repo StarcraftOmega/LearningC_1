@@ -1,5 +1,5 @@
 //unit6.hw
-//Group members: Jonathan , Samuel Yang
+//Group members: Jonathan Faircloth, Samuel Yang
 
 #include <stdio.h>
 #include <ctype.h>
