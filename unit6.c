@@ -15,9 +15,9 @@ char most_occuring_character(char *str) {
     char most_occurring = -1;
 
     for (int i = 0; str[i] != '\0'; i++) {
-        freq[(unsigned char)str[i]]++;
-        if (freq[(unsigned char)str[i]] > max_count) {
-            max_count = freq[(unsigned char)str[i]];
+        freq[str[i]]++;
+        if (freq[str[i]] > max_count) {
+            max_count = freq[str[i]];
             most_occurring = str[i];
         }
     }
