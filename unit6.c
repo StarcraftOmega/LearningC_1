@@ -1,3 +1,6 @@
+//unit6.hw
+//Group members: Jonathan , Samuel Yang
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
