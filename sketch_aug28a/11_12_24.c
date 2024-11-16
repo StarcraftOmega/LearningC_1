@@ -2,48 +2,45 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-/*
-int main() {
-
-  int i, x[6], sum = 0;
-
-  printf("Enter 6 numbers: ");
-
-  for(i = 0; i < 6; ++i) {
-  // Equivalent to scanf("%d", &x[i]);
-      scanf("%d", x+i);
-
-  // Equivalent to sum += x[i]
-      sum += *(x+i);
-  }
-
-  printf("Sum = %d", sum);
-
-  return 0;
-}
-*/
 
 
-// create struct with person1 variable
-struct Person {
+struct employee{ 
+  int id;
   char name[50];
-  int citNo;
-  float salary;
-} person1;
+  struct employee *next;
 
-int main() {
+};
 
-  // assign value to name of person1
-  strcpy(person1.name, "George Orwell");
+void printList(struct employee *list){
+  struct employee * temp=list;
 
-  // assign values to other person1 variables
-  person1.citNo = 1984;
-  person1. salary = 2500;
+   while (temp != NULL)
+    {
+        printf("%d\t%s |", temp->id, temp->name);
+        temp = temp->next;
 
-  // print struct variables
-  printf("Name: %s\n", person1.name);
-  printf("Citizenship No.: %d\n", person1.citNo);
-  printf("Salary: %.2f", person1.salary);
+    }
 
-  return 0;
+}
+
+struct employee * addNode(struct employee *list,int id, char *name){
+  struct employee * newNode = malloc (sizeof(struct employee));
+  newNode->id=id;
+
+  strcpy(newNode->name,name);
+  newNode->next=list;
+  list=newNode;
+  return list;
+}
+
+int main(){
+  struct employee *list=NULL;
+
+  list = addNode(list,2222,"James");
+  list = addNode(list,6661,"UK");
+  list = addNode(list,4123,"Madie");
+
+  printList(list);
+ 
+ return 0;
 }
