@@ -16,7 +16,6 @@ struct employee {
     struct employee *below;
 };
 
-//----------------------- FUNCTION DEFINITIONS ---------------------------
 
 //0. Compute employee ID based on the ASCII values of uppercase letters
 int getId(char *name) {
