@@ -18,12 +18,12 @@ struct employee {
 
 
 //0. Compute employee ID based on the ASCII values of uppercase letters
-int getId(char *name) {
-    int id = 0;
-    for (int i = 0; name[i] != '\0'; i++) {
-        id += toupper(name[i]);
+int getId ( char * name ){
+    int sum=0;
+    for(int i=0;name[i]!='\0';i++){
+        sum += (int)name[i];
     }
-    return id;
+    return sum;
 }
 
 //1. Print an individual employee's details
@@ -63,17 +63,17 @@ struct employee *addEmployee(struct employee *list, struct employee e) {
     }
 
     if (current && current->id == e.id) {
-       
         struct employee *collisionList = current;
         while (collisionList->below) {
             collisionList = collisionList->below;
         }
         collisionList->below = newEmployee;
     } else {
-        
         if (previous) {
+            newEmployee->next = previous->next;
             previous->next = newEmployee;
         } else {
+            newEmployee->next = list;
             list = newEmployee;
         }
     }
