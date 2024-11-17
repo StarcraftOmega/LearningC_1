@@ -45,7 +45,7 @@ struct employee * addEmployee ( struct employee * list , struct employee e){
 
     addNew->below=NULL;
     while(temp != NULL){
-        if(list->name==e.name){
+        if(strcmp(temp->name, e.name) == 0){
             printf("Same name already in use");
             return list;
         }
@@ -66,16 +66,19 @@ struct employee * addEmployee ( struct employee * list , struct employee e){
     return list;
 }
 //4.
-int searchEmployee ( struct employee * list , char * name){
-    struct employee *tempList=list;
-    while(tempList!=NULL){
-        if(strcmp(tempList->name)==name){
-            return 1;
+int searchEmployee(struct employee *list, char *name) {
+    struct employee *tempList = list;
+    while (tempList != NULL) {
+        struct employee *tempBelow = tempList;
+        while (tempBelow != NULL) {
+            if (strcmp(tempBelow->name, name) == 0) { 
+                return 1; 
+            }
+            tempBelow = tempBelow->below; 
         }
-        tempList=tempList->next;
-    }
-    return 0;
-    
+        tempList = tempList->next;
+    } 
+    return 0; 
 }
 //5.
 float highestNetSalary(struct employee *list) {
