@@ -1,3 +1,6 @@
+//unit8.hw
+//Group members: Jonathan Faircloth, Samuel Yang
+
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
