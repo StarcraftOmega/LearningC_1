@@ -16,18 +16,22 @@ struct employee {
 
 
 //0.
-int getId ( char * name ){
-    int sum=0;
-    for(int i=0;name[i]!='\0';i++){
+int getId(char *name) {
+    int sum = 0;
+
+    name[strcspn(name, "\n")] = '\0';
+    for (int i = 0; name[i] != '\0'; i++) {
         sum += (int)name[i];
     }
     return sum;
 }
+
 //1.
 void printEmployee ( struct employee e){
     float netSalary=e.salary * 0.91+(e.numberOfDependents * 0.01 * e.salary);
     printf("[%d, %s, %.2f]\n", e.id, e.name, netSalary);
 }
+
 //2.
 void printAllEmployees ( struct employee * list){
     struct employee *temp=list;
@@ -42,32 +46,37 @@ void printAllEmployees ( struct employee * list){
     }
 }
 //3.
-struct employee * addEmployee ( struct employee * list , struct employee e){
-    struct employee *addNew=malloc(sizeof(struct employee));
-    struct employee *temp=list;
+struct employee *addEmployee(struct employee *list, struct employee e) {
+    struct employee *addNew = malloc(sizeof(struct employee));
+    struct employee *temp = list;
 
-    addNew->below=NULL;
-    while(temp != NULL){
-        if(strcmp(temp->name, e.name) == 0){
-            printf("Same name already in use");
+    addNew->below = NULL;
+
+    while (temp != NULL) {
+        if (strcmp(temp->name, e.name) == 0) {
+            printf("Same name already in use\n");
+            free(addNew);
             return list;
         }
-        if(getId(list->name)==e.id){
-            addNew->below=temp;
-            break;
+        if (getId(temp->name) == e.id) {
+            addNew->below = temp->below;
+            temp->below = addNew;
+            addNew->id = e.id;
+            addNew->salary = e.salary;
+            strcpy(addNew->name, e.name);
+            return list;  
         }
-        temp=list->next;
+        temp = temp->next; 
     }
 
-    addNew->id=e.id;
-    addNew->salary=e.salary;
-    strcpy(addNew->name,e.name);
-    if (addNew->below==NULL){
-        addNew->next=list;
-    }
-    list=addNew;
-    return list;
+    addNew->id = e.id;
+    addNew->salary = e.salary;
+    addNew->numberOfDependents = e.numberOfDependents;
+    strcpy(addNew->name, e.name);
+    addNew->next = list;
+    return addNew;
 }
+
 //4.
 int searchEmployee(struct employee *list, char *name) {
     struct employee *tempList = list;
@@ -119,8 +128,7 @@ int main() {
         tempEmployee.id = getId ( tempEmployee.name );
 
         printf ("Enter salary-numberOfDependents: ");
-        scanf ("%f-%d", &tempEmployee.salary,
-        &tempEmployee.numberOfDependents);
+        scanf ("%f-%d", &tempEmployee.salary,&tempEmployee.numberOfDependents);
 
         company = addEmployee ( company , tempEmployee );
 
